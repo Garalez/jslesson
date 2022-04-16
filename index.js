@@ -17,7 +17,9 @@ const quantity = +prompt("Количество товара");
 const category = prompt("Категория товара");
 const price = +prompt("Цена товара");
 
-console.log('"На складе ' + quantity + ' единицы товара ' + '"' + title + '"' + ' на сумму ' + quantity * price + ' деревянных"');
-console.log(typeof quantity);
-console.log(typeof price);
+if (isNaN(quantity)){
+  console.log('Вы ввели некорректные данные');
+} else {
+  console.log('"На складе ' + quantity + ' единицы товара ' + '"' + title + '"' + ' на сумму ' + quantity * price + ' деревянных"');
+}
 }
