@@ -7,14 +7,14 @@ const calculate = (amount, qty, promo) => {
     amount -= amount * 0.03;
   }
   if ((amount - amountBorder) > 0) {
-    let discount = (amount - amountBorder) * 0.15;
+    const discount = (amount - amountBorder) * 0.15;
     amount -= discount
   }
   if (promo === 'METHED') {
-    let discount = amount * 0.1;
+    const discount = amount * 0.1;
     amount -= discount;
   } else if (promo === 'G3H2Z1' && amount >= 2000) {
-    let discount = 500;
+    const discount = 500;
     amount -= discount;
   }
 
