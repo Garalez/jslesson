@@ -1,10 +1,10 @@
 'use strict';
 
 const cart = {
-  items : [],
-  count : 0,
+  items: [],
+  count: 0,
   get totalPrice() {
-    return `${this.calculateItemPrice()}`
+    return `${this.calculateItemPrice()}`;
   },
   add(itemsName, itemsCost, itemsQuantity) {
     this.items.push({itemsName, itemsCost, itemsQuantity});
@@ -15,14 +15,16 @@ const cart = {
   },
   calculateItemPrice() {
     let sum = 0;
-    for (let key in this.items) {
-      const elem = this.items[key];
-      sum += elem.itemsQuantity * this.count;
+    for (const key in this.items) {
+      if (this.items.length > 0) {
+        const elem = this.items[key];
+        sum += elem.itemsQuantity * this.count;
+      }
     }
     return sum;
   },
   clear() {
-    while(this.items.length > 0) {
+    while (this.items.length > 0) {
       this.items.pop();
     }
     this.count = 0;
@@ -33,8 +35,7 @@ const cart = {
     console.log(itemsStr);
     return (`итоговая цена - ${this.calculateItemPrice()}`);
   },
-}
-
+};
 
 
 cart.add('телефон', 10, 15);
@@ -46,5 +47,5 @@ console.log(cart.items);
 console.log(cart.count);
 console.log(cart.totalPrice);
 // console.log(cart.calculateItemPrice());
-console.log(cart.clear());
+// console.log(cart.clear());
 console.log(cart.print());
