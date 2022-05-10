@@ -40,6 +40,13 @@
       }
       console.log(computerChoice);
       let yourChoice = prompt(`${lang[0]},${lang[1]},${lang[2]}?`);
+      if (yourChoice.charAt(0) === lang[0].charAt(0)) {
+        yourChoice = lang[0];
+      } else if (yourChoice.charAt(0) === lang[1].charAt(0)) {
+        yourChoice = lang[1];
+      } else if (yourChoice.charAt(0) === lang[2].charAt(0)) {
+        yourChoice = lang[2];
+      }
       if (yourChoice === null) {
         if (window.confirm(`${lang[12]}?`)) {
           alert(`${lang[9]}: 
@@ -55,47 +62,33 @@
       yourChoice.charAt(0) !== lang[1].charAt(0) &&
       yourChoice.charAt(0) !== lang[2].charAt(0)) {
         alert(`${lang[10]}`);
-      }
-      if (yourChoice.charAt(0) === computerChoice.charAt(0)) {
+      } else if (yourChoice.charAt(0) === computerChoice.charAt(0)) {
         alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${computerChoice}
+        ${lang[5]}: ${yourChoice}
         ${lang[11]}`);
-      } else if (yourChoice.charAt(0) === lang[2].charAt(0) &&
-      computerChoice === lang[0]) {
-        result.computer++;
-        alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[2]}
-        ${lang[7]}`);
       } else if (yourChoice.charAt(0) === lang[1].charAt(0) &&
       computerChoice === lang[0]) {
         result.player++;
         alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[1]}
+        ${lang[5]}: ${yourChoice}
         ${lang[6]}`);
-      } else if (yourChoice.charAt(0) === lang[1].charAt(0) &&
-      computerChoice === lang[2]) {
-        result.computer++;
-        alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[1]}
-        ${lang[7]}`);
       } else if (yourChoice.charAt(0) === lang[0].charAt(0) &&
       computerChoice === lang[2]) {
         result.player++;
         alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[0]}
+        ${lang[5]}: ${yourChoice}
         ${lang[6]}`);
-      } else if (yourChoice.charAt(0) === lang[0].charAt(0) &&
-      computerChoice === lang[1]) {
-        result.computer++;
-        alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[0]}
-        ${lang[7]}`);
       } else if (yourChoice.charAt(0) === lang[2].charAt(0) &&
       computerChoice === lang[1]) {
         result.player++;
         alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${lang[2]}
+        ${lang[5]}: ${yourChoice}
         ${lang[6]}`);
+      } else {
+        result.computer++;
+        alert(`${lang[4]}: ${computerChoice}
+        ${lang[5]}: ${yourChoice}
+        ${lang[7]}`);
       }
       if (window.confirm(`${lang[3]}?`)) {
         start();
