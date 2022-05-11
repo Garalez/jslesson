@@ -67,18 +67,10 @@
         ${lang[5]}: ${yourChoice}
         ${lang[11]}`);
       } else if (yourChoice.charAt(0) === lang[1].charAt(0) &&
-      computerChoice === lang[0]) {
-        result.player++;
-        alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${yourChoice}
-        ${lang[6]}`);
-      } else if (yourChoice.charAt(0) === lang[0].charAt(0) &&
-      computerChoice === lang[2]) {
-        result.player++;
-        alert(`${lang[4]}: ${computerChoice}
-        ${lang[5]}: ${yourChoice}
-        ${lang[6]}`);
-      } else if (yourChoice.charAt(0) === lang[2].charAt(0) &&
+      computerChoice === lang[0] ||
+      yourChoice.charAt(0) === lang[0].charAt(0) &&
+      computerChoice === lang[2] ||
+      yourChoice.charAt(0) === lang[2].charAt(0) &&
       computerChoice === lang[1]) {
         result.player++;
         alert(`${lang[4]}: ${computerChoice}
