@@ -6,18 +6,12 @@
     let playerCountBalls = 5;
     let compCountBalls = 5;
     let winner;
-    const figuresEng =
-    ['rock', 'paper', 'scissors', 'More',
-      'Computer choose', 'You choose', 'You win',
-      'You lose', 'Player', 'Result',
-      'You cannot do this', 'Draw', 'Are you sure you want to leave',
-      'Computers wins', 'Your wins'];
-    const figuresRu =
-    ['камень', 'бумага', 'ножницы', 'Ещё',
-      'Компьютер выбрал', 'Вы выбрали', 'Ты выиграл',
-      'Ты проиграл', 'Игрок', 'Результат',
-      'Так нельзя', 'Ничья', 'Вы точно хотите выйти', 'Побед компьютера',
-      'Твои победы'];
+    const figures = {
+      eng: ['rock', 'paper', 'scissors', 'Computer choose',
+        'You choose', 'You win', 'You lose', 'You cannot do this', 'Draw'],
+      ru: ['камень', 'бумага', 'ножницы', 'Компьютер выбрал',
+        'Вы выбрали', 'Ты выиграл', 'Ты проиграл', 'Так нельзя', 'Ничья'],
+    };
     const getRandomIntInclusive = (min, max) => {
       min = Math.ceil(1);
       max = Math.floor(3);
@@ -32,7 +26,7 @@
           computer: 0,
         };
         const lang = language === 'EN' || language === 'ENG' ?
-        figuresEng : figuresRu;
+        figures.eng : figures.ru;
         let computerChoice = getRandomIntInclusive();
         if (computerChoice === 1) {
           computerChoice = lang[0];
@@ -54,11 +48,11 @@
         if (yourChoice.charAt(0) !== lang[0].charAt(0) &&
         yourChoice.charAt(0) !== lang[1].charAt(0) &&
         yourChoice.charAt(0) !== lang[2].charAt(0)) {
-          alert(`${lang[10]}`);
+          alert(`${lang[7]}`);
         } else if (yourChoice.charAt(0) === computerChoice.charAt(0)) {
-          alert(`${lang[4]}: ${computerChoice}
-          ${lang[5]}: ${yourChoice}
-          ${lang[11]}`);
+          alert(`${lang[3]}: ${computerChoice}
+          ${lang[4]}: ${yourChoice}
+          ${lang[8]}`);
         } else if (yourChoice.charAt(0) === lang[1].charAt(0) &&
         computerChoice === lang[0] ||
         yourChoice.charAt(0) === lang[0].charAt(0) &&
@@ -66,17 +60,17 @@
         yourChoice.charAt(0) === lang[2].charAt(0) &&
         computerChoice === lang[1]) {
           result.player++;
-          alert(`${lang[4]}: ${computerChoice}
-          ${lang[5]}: ${yourChoice}
-          ${lang[6]}`);
+          alert(`${lang[3]}: ${computerChoice}
+          ${lang[4]}: ${yourChoice}
+          ${lang[5]}`);
         } else {
           result.computer++;
-          alert(`${lang[4]}: ${computerChoice}
-          ${lang[5]}: ${yourChoice}
-          ${lang[7]}`);
+          alert(`${lang[3]}: ${computerChoice}
+          ${lang[4]}: ${yourChoice}
+          ${lang[6]}`);
         }
         if (result.computer === 0 && result.player === 0) {
-          rpsGame();
+          rpsGame('EN');
         } else if (result.computer === 1) {
           return step = false;
         } else if (result.player === 1) {
@@ -147,14 +141,14 @@
           if (confirm(`сыграть по новой?`)) {
             playerCountBalls = 5;
             compCountBalls = 5;
-            rpsGame();
+            rpsGame('EN');
           } else {
             return;
           }
         }
         startBalloon();
       };
-      rpsGame();
+      rpsGame('EN');
       startBalloon();
     };
   };
